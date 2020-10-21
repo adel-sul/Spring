@@ -4,8 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="javaHours" class="com.cybertek.services.Java"></bean>
-    <bean id="seleniumHours" class="com.cybertek.services.Selenium"></bean>
+    <bean id="javaHours" class="com.Java">
+        <property name="officeHours" ref="officeHours"/>
+    </bean>
+    <bean id="seleniumHours" class="com.Selenium"></bean>
     <bean id="officeHours" class="com.cybertek.services.OfficeHours"></bean>
 
 </beans>
