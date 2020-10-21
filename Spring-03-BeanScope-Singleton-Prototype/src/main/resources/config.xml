@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="javaHours" class="com.cybertek.services.Java" scope="prototype"></bean>
-    <bean id="seleniumHours" class="com.cybertek.services.Selenium"></bean>
+    <bean id="javaHours" class="com.Java" scope="prototype"></bean>
+    <bean id="seleniumHours" class="com.Selenium"></bean>
 
 </beans>
