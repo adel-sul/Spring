@@ -18,5 +18,5 @@ public class Employee {
     private String address2;
     private String city;
     private String state;
-    private String zip;
+    private int zip;
 }
