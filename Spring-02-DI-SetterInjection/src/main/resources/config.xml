@@ -8,6 +8,6 @@
         <property name="officeHours" ref="officeHours"/>
     </bean>
     <bean id="seleniumHours" class="com.Selenium"></bean>
-    <bean id="officeHours" class="com.cybertek.services.OfficeHours"></bean>
+    <bean id="officeHours" class="com.OfficeHours"></bean>
 
 </beans>
