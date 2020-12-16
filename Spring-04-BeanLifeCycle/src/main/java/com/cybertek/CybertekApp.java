@@ -9,7 +9,7 @@ public class CybertekApp {
     public static void main(String[] args) {
         ApplicationContext container = new ClassPathXmlApplicationContext("config.xml");
         Course course = container.getBean("javaHours", Course.class);
-        course.getTeacingHours();
+        course.getTeachingHours();
         ((ClassPathXmlApplicationContext) container).close();
 
     }

@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="javaHours" class="com.cybertek.services.Java" init-method="initMethod" destroy-method="destroyMethod"></bean>
+    <bean id="javaHours" class="com.Java" init-method="initMethod" destroy-method="destroyMethod"></bean>
 
 </beans>
