@@ -1,0 +1,5 @@
+INSERT INTO student(id, first_name, last_name, email) VALUES (1, 'Mike', 'Smith', 'abc@pnc.com')
+INSERT INTO student(id, first_name, last_name, email) VALUES (2, 'Tom', 'Hanks', 'bcd@pnc.com')
+INSERT INTO student(id, first_name, last_name, email) VALUES (3, 'Brad', 'Pitt', 'def@pnc.com')
+INSERT INTO student(id, first_name, last_name, email) VALUES (4, 'Shawn', 'Penn', 'fgh@pnc.com')
+INSERT INTO student(id, first_name, last_name, email) VALUES (5, 'John', 'Doe', 'thy@pnc.com')
