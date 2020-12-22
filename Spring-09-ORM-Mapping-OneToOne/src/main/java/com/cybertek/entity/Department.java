@@ -1,9 +1,6 @@
 package com.cybertek.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
 
 @Entity
@@ -20,4 +17,8 @@ public class Department extends BaseEntity{
 
     private String division;
     private String department;
+
+    @OneToOne(mappedBy = "region")
+    private Employee employee;
+
 }
