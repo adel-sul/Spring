@@ -1,7 +1,6 @@
 package com.cybertek.entity;
 
 import com.cybertek.enums.Gender;
-import jdk.jfr.Timestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
