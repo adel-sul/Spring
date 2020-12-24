@@ -2,8 +2,7 @@ package com.cybertek.bootstrap;
 
 import com.cybertek.entity.Address;
 import com.cybertek.entity.Person;
-import com.cybertek.repository.AddressRepository;
-import com.cybertek.repository.PersonRepository;
+import com.cybertek.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,6 +12,7 @@ public class DataGenerator implements CommandLineRunner {
 
     @Autowired
     PersonRepository personRepository;
+
     @Autowired
     AddressRepository addressRepository;
 
