@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 @Setter
 public class Ticket {
 
-    public Ticket(LocalDateTime dateTime, Integer seatNumber, Integer rowNumber) {
-        this.dateTime = dateTime;
+    public Ticket(Integer seatNumber, Integer rowNumber, LocalDateTime dateTime) {
         this.seatNumber = seatNumber;
         this.rowNumber = rowNumber;
+        this.dateTime = dateTime;
     }
 
     @Id
@@ -21,15 +21,20 @@ public class Ticket {
     @Column(name = "id")
     private Long ticketId;
 
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime dateTime;
+    @Column(name = "seat_number")
     private Integer seatNumber;
+
+    @Column(name = "row_number")
     private Integer rowNumber;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime dateTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private MovieCinema movieCinema;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserAccount userAccount;
 
 }

@@ -26,6 +26,6 @@ public class Cinema {
 //    @OneToMany(mappedBy = "cinema", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
 //    private List<MovieCinema> movieCinemas;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Location location;
 }

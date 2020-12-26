@@ -10,15 +10,15 @@ import javax.persistence.*;
 @Setter
 public class AccountDetails {
 
-    public AccountDetails(String address, Integer age, String city, String country, String name, String postalCode, Role role, String state) {
-        this.address = address;
-        this.age = age;
-        this.city = city;
-        this.country = country;
+    public AccountDetails(String name, String address, String country, String state, String city, Integer age, String postalCode, Role role) {
         this.name = name;
+        this.address = address;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.age = age;
         this.postalCode = postalCode;
         this.role = role;
-        this.state = state;
     }
 
     @Id
@@ -26,17 +26,16 @@ public class AccountDetails {
     @Column(name = "id")
     private Long accountDetailsId;
 
-    private String address;
-    private Integer age;
-    private String city;
-    private String country;
     private String name;
+    private String address;
+    private String country;
+    private String state;
+    private String city;
+    private Integer age;
     private String postalCode;
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    private String state;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "accountDetails")
     private UserAccount userAccount;

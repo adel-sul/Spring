@@ -15,14 +15,13 @@ import java.util.*;
 @Setter
 public class Movie {
 
-    public Movie(Integer duration, String name, BigDecimal price, LocalDate release_date, MovieState state, String summary, MovieType type) {
-        this.duration = duration;
+    public Movie(String name, LocalDate release_date, Integer duration, MovieType type, MovieState state, BigDecimal price) {
         this.name = name;
-        this.price = price;
         this.release_date = release_date;
-        this.state = state;
-        this.summary = summary;
+        this.duration = duration;
         this.type = type;
+        this.state = state;
+        this.price = price;
     }
 
     @Id
@@ -30,15 +29,12 @@ public class Movie {
     @Column(name = "id")
     private Long movieId;
 
-    private Integer duration;
     private String name;
-    private BigDecimal price;
 
     @Column(columnDefinition = "DATE")
     private LocalDate release_date;
 
-    @Enumerated(EnumType.STRING)
-    private MovieState state;
+    private Integer duration;
 
     @Column(columnDefinition = "text") // no limitation on number of characters
     private String summary;
@@ -46,7 +42,12 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private MovieType type;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @Enumerated(EnumType.STRING)
+    private MovieState state;
+
+    private BigDecimal price;
+
+    @ManyToMany
     @JoinTable(name = "movie_genre_rel",
                 joinColumns = @JoinColumn(name = "movie_id"),
                 inverseJoinColumns = @JoinColumn(name = "genre_id"))
