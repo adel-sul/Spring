@@ -1,13 +1,13 @@
 package com.cybertek.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.cybertek.enums.MovieState;
+import com.cybertek.enums.MovieType;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor
@@ -15,24 +15,42 @@ import java.util.Set;
 @Setter
 public class Movie {
 
+    public Movie(Integer duration, String name, BigDecimal price, LocalDate release_date, MovieState state, String summary, MovieType type) {
+        this.duration = duration;
+        this.name = name;
+        this.price = price;
+        this.release_date = release_date;
+        this.state = state;
+        this.summary = summary;
+        this.type = type;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long movie_id;
 
-    private int duration;
+    private Integer duration;
     private String name;
-    private double price;
-    private String release_date;
-    private String state;
+    private BigDecimal price;
+
+    @Column(columnDefinition = "DATE")
+    private LocalDate release_date;
+
+    @Enumerated(EnumType.STRING)
+    private MovieState state;
+
+    @Column(columnDefinition = "text") // no limitation on number of characters
     private String summary;
-    private String type;
+
+    @Enumerated(EnumType.STRING)
+    private MovieType type;
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "movie_genre_rel",
-                joinColumns = {@JoinColumn(name = "movie_id")},
-                inverseJoinColumns = {@JoinColumn(name = "genre_id")})
-    private Set<Genre> genres = new HashSet<>();
+                joinColumns = @JoinColumn(name = "movie_id"),
+                inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genres = new ArrayList<>(); // best practice to use Set in @ManyToMany relationship
 
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
     private List<MovieCinema> movieCinemas;
