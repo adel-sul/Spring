@@ -1,10 +1,8 @@
 package com.cybertek.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -12,19 +10,26 @@ import javax.persistence.*;
 @Setter
 public class Ticket {
 
+    public Ticket(LocalDateTime dateTime, Integer seatNumber, Integer rowNumber) {
+        this.dateTime = dateTime;
+        this.seatNumber = seatNumber;
+        this.rowNumber = rowNumber;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long ticket_id;
+    private Long ticketId;
 
-    private String date_time;
-    private String seat_number;
-    private String row_number;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime dateTime;
+    private Integer seatNumber;
+    private Integer rowNumber;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private MovieCinema movieCinema;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private UserAccount userAccount;
 
 }

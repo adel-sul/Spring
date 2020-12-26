@@ -28,7 +28,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long movie_id;
+    private Long movieId;
 
     private Integer duration;
     private String name;
@@ -52,6 +52,7 @@ public class Movie {
                 inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genres = new ArrayList<>(); // best practice to use Set in @ManyToMany relationship
 
-    @OneToMany(mappedBy = "movie", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
-    private List<MovieCinema> movieCinemas;
+//    unidirectional relationship created between tables in MovieCinema table
+//    @OneToMany(mappedBy = "movie", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+//    private List<MovieCinema> movieCinemas;
 }

@@ -1,12 +1,8 @@
 package com.cybertek.entity;
 
 import com.cybertek.enums.Role;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -14,17 +10,28 @@ import java.util.List;
 @Setter
 public class AccountDetails {
 
+    public AccountDetails(String address, Integer age, String city, String country, String name, String postalCode, Role role, String state) {
+        this.address = address;
+        this.age = age;
+        this.city = city;
+        this.country = country;
+        this.name = name;
+        this.postalCode = postalCode;
+        this.role = role;
+        this.state = state;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long account_details_id;
+    private Long accountDetailsId;
 
     private String address;
-    private int age;
+    private Integer age;
     private String city;
     private String country;
     private String name;
-    private String postal_code;
+    private String postalCode;
 
     @Enumerated(EnumType.STRING)
     private Role role;

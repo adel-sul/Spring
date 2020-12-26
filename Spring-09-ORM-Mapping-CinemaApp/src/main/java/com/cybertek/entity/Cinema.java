@@ -1,11 +1,7 @@
 package com.cybertek.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -13,17 +9,23 @@ import java.util.List;
 @Setter
 public class Cinema {
 
+    public Cinema(String name, String sponsoredName) {
+        this.name = name;
+        this.sponsoredName = sponsoredName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long cinema_id;
+    private Long cinemaId;
 
     private String name;
-    private String sponsored_name;
+    private String sponsoredName;
 
-    @OneToMany(mappedBy = "cinema", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
-    private List<MovieCinema> movieCinemas;
+//    unidirectional relationship created between tables in MovieCinema table
+//    @OneToMany(mappedBy = "cinema", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+//    private List<MovieCinema> movieCinemas;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private Location location;
 }

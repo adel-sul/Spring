@@ -1,11 +1,8 @@
 package com.cybertek.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -13,21 +10,33 @@ import java.util.List;
 @Setter
 public class Location {
 
+    public Location(String name, BigDecimal latitude, BigDecimal longitude, String address, String postalCode, String country, String state, String city) {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long location_id;
+    private Long locationId;
 
     private String name;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private String address;
-    private String postal_code;
+    private String postalCode;
     private String country;
     private String state;
     private String city;
-    private String latitude;
-    private String longitude;
 
-    @OneToMany(mappedBy = "location", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
-    private List<Cinema> cinemas;
+//    unidirectional relationship created between tables in MovieCinema table
+//    @OneToMany(mappedBy = "location", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+//    private List<Cinema> cinemas;
 
 }
