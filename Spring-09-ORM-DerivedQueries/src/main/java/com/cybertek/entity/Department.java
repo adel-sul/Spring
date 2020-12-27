@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "departments")
+@ToString
 public class Department{
 
     @Id
