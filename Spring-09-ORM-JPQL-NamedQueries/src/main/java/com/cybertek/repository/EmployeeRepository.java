@@ -1,5 +1,6 @@
 package com.cybertek.repository;
 
+import com.cybertek.entity.Department;
 import com.cybertek.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -76,5 +77,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Transactional
     @Query(value = "UPDATE employees SET email = 'abc@native_query.com' WHERE id = :id", nativeQuery = true)
     void updateEmployeeNativeQuery(@Param("id") Long id);
+
+    // named query (inside META-INF > jpa-named-queries.properties file)
+    List<Department> retrieveEmployeeSalaryGreaterThan(Integer salary);
+
 
 }
