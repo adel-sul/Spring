@@ -4,7 +4,6 @@ import com.cybertek.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -16,5 +15,10 @@ public interface DepartmentRepository extends JpaRepository<Department, String> 
 
     // named query (inside META-INF > jpa-named-queries.properties file)
     List<Department> retrieveDepartmentByDivision(String division);
+
+    @Query(nativeQuery = true) // for native queries
+    List<Department> retrieveDepartmentByDivisionContains(String pattern);
+
+    List<Department> findDepartmentByDivisionAnnotation(String division);
 
 }
