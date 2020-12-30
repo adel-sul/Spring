@@ -101,8 +101,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Can be grouped in one place and referred in code by their names.
     Spring Data JPA will take care of all the boilerplate code required to execute these queries.
     To reference the named query in Spring Data JPA repository, it's name should start with the name of the entity class, followed by a dot (.), and the name of the method
+    Defining by using a properties file jpa-named-queries.properties inside the META-INF folder under /src/main/resources/
     */
-    // defining by using a properties file jpa-named-queries.properties inside the META-INF folder under /src/main/resources/
     List<Employee> retrieveEmployeeSalaryGreaterThan(Integer salary);
 
 
