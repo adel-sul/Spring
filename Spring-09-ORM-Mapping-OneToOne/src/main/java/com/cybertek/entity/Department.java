@@ -18,7 +18,11 @@ public class Department extends BaseEntity{
     private String division;
     private String department;
 
-    @OneToOne(mappedBy = "region")
+    /*
+        The mappedBy attribute characterizes a bidirectional association and must be set on the parent-side.
+        It signals hibernate that key for the relationship is on the other side (Employee).
+    */
+    @OneToOne(mappedBy = "department")
     private Employee employee;
 
 }

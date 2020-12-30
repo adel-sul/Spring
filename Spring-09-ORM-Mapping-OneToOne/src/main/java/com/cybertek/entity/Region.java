@@ -23,6 +23,10 @@ public class Region extends BaseEntity{
     private String region;
     private String country;
 
+    /*
+        The mappedBy attribute characterizes a bidirectional association and must be set on the parent-side.
+        It signals hibernate that key for the relationship is on the other side (Employee).
+    */
     @OneToOne(mappedBy = "region")
     private Employee employee;
 }
