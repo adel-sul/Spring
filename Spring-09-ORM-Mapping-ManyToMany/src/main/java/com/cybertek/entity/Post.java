@@ -23,6 +23,11 @@ public class Post {
     private String title;
     private String description;
 
+    /*
+        The bidirectional @ManyToMany association can be navigated from both sides, therefore, both sides can be parents(parent-side).
+        None of them will hold a foreign key. In this association, there are two foreign keys that are stored in a separate table, known as the junction or join table (post_tag_rel).
+        @JoinTable provides a mapping between two tables.
+    */
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "post_tag_rel",                               // renaming join table
             joinColumns = {@JoinColumn(name = "custom1")},          // renaming 1st column
