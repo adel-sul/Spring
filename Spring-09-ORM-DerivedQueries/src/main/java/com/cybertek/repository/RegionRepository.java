@@ -8,19 +8,25 @@ import java.util.List;
 
 @Repository
 public interface RegionRepository extends JpaRepository<Region, Long> {
+    /*
+       SEE DepartmentRepository
+    */
 
-    //Display All regions in Canada
+    // TODO: Display All regions in Canada
     List<Region> findAllByCountry(String country);
 
-    //Display All regions in Canada without duplicates
+    // TODO: Display All regions in Canada without duplicates
     List<Region> findDistinctByCountry(String country);
 
-    //Display All regions with country name includes 'United'
+    // ----- Matching Conditions -----
+    // TODO: Display All regions with country name includes 'United'
     List<Region> findAllByCountryContains(String pattern);
 
-    //Display All regions with country name includes 'United' in order
+    // ----- Sorting -----
+    // TODO: Display All regions with country name includes 'United' in order
     List<Region> findAllByCountryContainsOrderByCountry(String pattern);
 
-    //Display top 2 regions in country
+    // ----- Limiting Query Results -----
+    // TODO: Display Top 2 regions in country
     List<Region> findTop2ByCountry(String pattern);
 }
