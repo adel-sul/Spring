@@ -37,6 +37,11 @@ public class Employee extends BaseEntity{
 
     private int salary;
 
+    /*
+        Fetching Types:
+            LAZY : fetch when needed
+            EAGER : fetch immediately
+    */
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id") // custom name for column
     private Department department;
