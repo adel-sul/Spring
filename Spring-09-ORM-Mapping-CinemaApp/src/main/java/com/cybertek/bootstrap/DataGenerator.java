@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-@Component
+//@Component
 public class DataGenerator implements CommandLineRunner {
 
     private MovieRepository movieRepository;

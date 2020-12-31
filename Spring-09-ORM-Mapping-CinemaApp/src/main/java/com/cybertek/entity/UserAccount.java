@@ -31,4 +31,13 @@ public class UserAccount {
 //    @OneToMany(mappedBy = "userAccount", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
 //    private List<Ticket> tickets;
 
+    @Override
+    public String toString() {
+        return "UserAccount{" +
+                "userAccountId=" + userAccountId +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

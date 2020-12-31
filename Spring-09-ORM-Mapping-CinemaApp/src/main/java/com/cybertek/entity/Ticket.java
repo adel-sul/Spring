@@ -37,4 +37,13 @@ public class Ticket {
     @ManyToOne(fetch = FetchType.LAZY)
     private UserAccount userAccount;
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketId=" + ticketId +
+                ", seatNumber=" + seatNumber +
+                ", rowNumber=" + rowNumber +
+                ", dateTime=" + dateTime +
+                '}';
+    }
 }

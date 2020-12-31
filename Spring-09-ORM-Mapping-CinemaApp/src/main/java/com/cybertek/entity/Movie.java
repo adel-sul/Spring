@@ -15,9 +15,9 @@ import java.util.*;
 @Setter
 public class Movie {
 
-    public Movie(String name, LocalDate release_date, Integer duration, MovieType type, MovieState state, BigDecimal price) {
+    public Movie(String name, LocalDate releaseDate, Integer duration, MovieType type, MovieState state, BigDecimal price) {
         this.name = name;
-        this.release_date = release_date;
+        this.releaseDate = releaseDate;
         this.duration = duration;
         this.type = type;
         this.state = state;
@@ -32,7 +32,7 @@ public class Movie {
     private String name;
 
     @Column(columnDefinition = "DATE")
-    private LocalDate release_date;
+    private LocalDate releaseDate;
 
     private Integer duration;
 
@@ -47,7 +47,7 @@ public class Movie {
 
     private BigDecimal price;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "movie_genre_rel",
                 joinColumns = @JoinColumn(name = "movie_id"),
                 inverseJoinColumns = @JoinColumn(name = "genre_id"))
@@ -56,4 +56,18 @@ public class Movie {
 //    unidirectional relationship created between tables in MovieCinema table
 //    @OneToMany(mappedBy = "movie", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
 //    private List<MovieCinema> movieCinemas;
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movieId=" + movieId +
+                ", name='" + name + '\'' +
+                ", release_date=" + releaseDate +
+                ", duration=" + duration +
+                ", summary='" + summary + '\'' +
+                ", type=" + type +
+                ", state=" + state +
+                ", price=" + price +
+                '}';
+    }
 }

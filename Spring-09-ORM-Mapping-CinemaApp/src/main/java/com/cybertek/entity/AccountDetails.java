@@ -8,6 +8,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class AccountDetails {
 
     public AccountDetails(String name, String address, String country, String state, String city, Integer age, String postalCode, Role role) {
