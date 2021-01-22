@@ -29,7 +29,7 @@ public class DataGenerator implements CommandLineRunner {
         User admin = new User("adel", passwordEncoder.encode("adel123"), "ADMIN", "ACCESS_TEST1,ACCESS_TEST2");
         User manager = new User("mike", passwordEncoder.encode("mike123"), "MANAGER", "ACCESS_TEST1");
 
-        List users = Arrays.asList(employee, admin, manager);
+        List<User> users = Arrays.asList(employee, admin, manager);
         userRepository.saveAll(users);
 
     }
