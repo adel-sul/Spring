@@ -30,7 +30,7 @@ public class UserPrincipal implements UserDetails {
 
         //Extract list of roles
         user.getRoleList().forEach(r ->{
-            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" +r);
+            GrantedAuthority authority = new SimpleGrantedAuthority(r); // no "ROLE_" required when hasAnyAuthority() used in SecurityConfig
             authorities.add(authority);
         });
 
