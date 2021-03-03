@@ -1,0 +1,13 @@
+DEFAULT API DOCUMENTATION IN JSON FORMAT
+http://localhost:8080/v3/api-docs
+
+CAN BE CUSTOMIZED IN application.properties file:
+springdoc.api-docs.path=/api-docs
+
+TO VIEW SWAGGER PAGE
+http://localhost:8080/swagger-ui.html
+
+CAN BE CUSTOMIZED IN application.properties file:
+springdoc.swagger-ui.path=/swagger-custom.html
+
+info part can be updated in runner class.
