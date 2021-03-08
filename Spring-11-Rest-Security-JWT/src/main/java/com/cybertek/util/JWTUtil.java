@@ -19,12 +19,12 @@ public class JWTUtil {
     @Value("${security.jwt.secret-key}") // reads from property file
     private String secret;
 
-    public String generateToken(User user, String userName) {
+    public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userName", user.getUserName());
         claims.put("email", user.getEmail());
 
-        return createToken(claims, userName);
+        return createToken(claims, user.getUserName());
     }
 
     private String createToken(Map<String, Object> claims, String userName) {
@@ -33,7 +33,7 @@ public class JWTUtil {
                 .setSubject(userName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 *10)) //10 hours token validity
-                .signWith(SignatureAlgorithm.ES256, secret).compact();
+                .signWith(SignatureAlgorithm.HS256,secret).compact();
     }
 
     private Claims extractAllClaims(String token) {

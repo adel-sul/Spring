@@ -22,17 +22,21 @@ public class SecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+
         User foundUser = loadUser(s);
-        if (foundUser == null) throw new UsernameNotFoundException("USER "+s+" NOT FOUND!!!");
+        if(foundUser == null){
+            throw new UsernameNotFoundException("user not found! " + s);
+        }
+
         return new org.springframework.security.core.userdetails.User(foundUser.getUserName(), foundUser.getPassword(), listAuthorities(foundUser));
     }
 
-    public User loadUser(String value) {
+    public User loadUser(String value){
         boolean isEmail = value.contains("@");
         return isEmail ? userService.readByEmail(value) : userService.readByUsername(value);
     }
 
-    private List<GrantedAuthority> listAuthorities(User user) {
+    private List<GrantedAuthority> listAuthorities(User user){
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         grantedAuthorityList.add(new SimpleGrantedAuthority(user.getRole().name()));
         return grantedAuthorityList;

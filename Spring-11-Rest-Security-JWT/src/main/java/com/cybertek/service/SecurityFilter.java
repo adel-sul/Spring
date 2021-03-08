@@ -26,6 +26,7 @@ public class SecurityFilter extends OncePerRequestFilter{
         this.jwtUtil = jwtUtil;
         this.securityService = securityService;
     }
+
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
@@ -58,5 +59,4 @@ public class SecurityFilter extends OncePerRequestFilter{
         User currentUser = securityService.loadUser(username);
         return currentUser != null && currentUser.getIsVerified() && currentUser.getState() == UserState.ACTIVE;
     }
-
 }

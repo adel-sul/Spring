@@ -58,6 +58,7 @@ public class UserService {
         user.setState(UserState.ACTIVE);
         return userRepository.save(user);
     }
+
     @Transactional
     public void deleteUser(Integer id) throws ServiceException {
 
@@ -68,6 +69,7 @@ public class UserService {
         user.setIsVerified(false);
         userRepository.save(user);
     }
+
     @Transactional
     public User resetPassword(User user) throws ServiceException {
 

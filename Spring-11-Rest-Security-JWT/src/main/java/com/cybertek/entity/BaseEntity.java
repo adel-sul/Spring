@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -21,12 +20,12 @@ public class BaseEntity {
     private Boolean isDeleted;
 
     @JsonIgnore
-    @Column(name = "created_date", nullable = false, updatable = false)
+    @Column(name = "create_date", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
     @JsonIgnore
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "updated_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
 
